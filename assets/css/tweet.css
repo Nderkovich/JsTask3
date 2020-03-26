@@ -42,3 +42,8 @@
     box-shadow: 0 0 4px gray;
     border-radius: 5px;
 }
+
+.tweet__category {
+    margin-top: 10px;
+    margin-left: 10px;
+}
