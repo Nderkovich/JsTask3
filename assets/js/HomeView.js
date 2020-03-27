@@ -17,9 +17,9 @@ export class HomeView {
     }
 
     _render(twitterAccount) {
-        let accountContainer = document.createElement("div");
+        const accountContainer = document.createElement("div");
         accountContainer.className = "twitter-account";
-        let accountContent = this._renderContent(twitterAccount);
+        const accountContent = this._renderContent(twitterAccount);
         accountContainer.appendChild(this._renderHeader(twitterAccount));
         accountContainer.appendChild(accountContent);
         accountContainer.onclick = () => {
@@ -35,9 +35,9 @@ export class HomeView {
     }
 
     _renderHeader(twitterAccount) {
-        let accountHeader = document.createElement("div");
+        const accountHeader = document.createElement("div");
         accountHeader.className = "twitter-account__header";
-        let accountDeleter = document.createElement("span");
+        const accountDeleter = document.createElement("span");
         accountDeleter.className = "twitter-account__delete";
         accountDeleter.onclick = () => {
             this.observable.remove(twitterAccount);
@@ -48,7 +48,7 @@ export class HomeView {
         accountHeader.appendChild(this._renderCategoryChoice(twitterAccount));
         accountHeader.appendChild(accountDeleter);
         if (twitterAccount.category !== null){
-            let category = document.createElement("div");
+            const category = document.createElement("div");
             category.className = "tweet__category";
             category.innerText = twitterAccount.category;
             accountHeader.appendChild(category);
@@ -57,7 +57,7 @@ export class HomeView {
     }
 
     _renderContent(twitterAccount) {
-        let accountContent = document.createElement("div");
+        const accountContent = document.createElement("div");
         accountContent.className = "twitter-account__content";
         accountContent.innerHTML = `
               <p>${twitterAccount.description}</p>
@@ -68,7 +68,7 @@ export class HomeView {
     }
 
     _renderAccountName(twitterAccount) {
-        let accountName = document.createElement("p");
+        const accountName = document.createElement("p");
         accountName.className = "twitter-account__name";
         accountName.innerText = `${twitterAccount.name}`;
         accountName.onclick = () => {
@@ -84,11 +84,11 @@ export class HomeView {
     }
 
     _renderCategoryChoice(twitterAccount){
-        let choiceSelector = document.createElement("div");
+        const choiceSelector = document.createElement("div");
         choiceSelector.className = "category__choice";
         choiceSelector.onclick = () => {
             if (choiceSelector.innerHTML == ""){
-                let choiceList = document.createElement("div");
+                const choiceList = document.createElement("div");
                 choiceList.className = "category__list";
                 this.categories.categories.forEach(element => {
                     choiceList.appendChild(this._renderCategoryElement(twitterAccount, element));
@@ -102,7 +102,7 @@ export class HomeView {
     }
 
     _renderCategoryElement(twitterAccount, category){
-        let option = document.createElement("div");
+        const option = document.createElement("div");
         option.className = "category__element";
         option.innerText = category;
         option.onclick = () => {

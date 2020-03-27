@@ -13,14 +13,14 @@ export class TweetsView {
     }
 
     _renameTweet(user, tweetData) {
-        let tweetContainer = document.createElement("div");
+        const tweetContainer = document.createElement("div");
         tweetContainer.className = "tweet";
-        let tweetImage = `<img class="tweet_avatar" src="${user.profile_image_url}">`;
+        const tweetImage = `<img class="tweet_avatar" src="${user.profile_image_url}">`;
         tweetContainer.innerHTML += tweetImage;
         tweetContainer.appendChild(this._renameTweetContent(tweetData));
         if (tweetData.extended_entities) {
             if (tweetData.extended_entities.media.length > 0) {
-                let images = this._getImage(tweetData.extended_entities.media)
+                const images = this._getImage(tweetData.extended_entities.media)
                 if (images) {
                     tweetContainer.appendChild(images);
                 }
@@ -31,9 +31,9 @@ export class TweetsView {
     }
 
     _renameTweetContent(tweetData) {
-        let container = document.createElement("div");
+        const container = document.createElement("div");
         container.className = "tweet__content";
-        let text = document.createElement("div");
+        const text = document.createElement("div");
         text.className = "tweet__text";
         text.innerText = tweetData.full_text;
         container.appendChild(text);
@@ -42,7 +42,7 @@ export class TweetsView {
     }
 
     _getImage(tweetMedia) {
-        let imageContainer = document.createElement("div");
+        const imageContainer = document.createElement("div");
         imageContainer.className = "tweet__images";
         tweetMedia.forEach(element => {
             if (element.type == "photo") {
