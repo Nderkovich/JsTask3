@@ -8,7 +8,6 @@ export class TwitterAccounts {
             twitterAccount.category = null;
         }
         this.elements.push(twitterAccount);
-        // localStorage.setItem("storage", JSON.stringify(storage));
     }
 
     remove(twitterAccount) {

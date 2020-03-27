@@ -1,16 +1,17 @@
 export class CategoryCollection {
-    constructor() {
+    constructor(storage) {
         this.categories = [];
+        this.storage = storage;
     }
 
     push(category) {
         this.categories.push(category);
-        localStorage.setItem("categories", JSON.stringify(this.categories));
+        this.storage.save("categories", this.categories);
     }
 
     remove(category) {
         this.categories.splice(this.categories.indexOf(category), 1);
-        localStorage.setItem("categories", JSON.stringify(this.categories));
+        this.storage.save("categories", this.categories);
     }
 
     includes(category) {

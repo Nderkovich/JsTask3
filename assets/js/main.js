@@ -5,6 +5,7 @@ import { CategoryCollection } from "./CategoryCollection";
 import { CategoriesView } from "./CategoriesView";
 import { HomeView } from "./HomeView";
 import { TwitterAccounts } from "./TwitterAccounts";
+import { Storage } from "./Storage"
 
 //TwitterApi class is used to get bearer token
 const KEY = "cuuPtExGpF3pS2IRINwGdyXRY";
@@ -12,23 +13,17 @@ const SECRET = "eGrMroNzVbgiF6nKM0n8IHbbWglbT5ougZcWUPGDbOERrUwjgq";
 
 
 //Inititalize storage on start
-if (localStorage.getItem("storage") === null) {
-    localStorage.setItem("storage", JSON.stringify(new TwitterAccounts()));
-}
-if (localStorage.getItem("categories") === null){
-    localStorage.setItem("categories", JSON.stringify(new Array()));
-    console.log(localStorage.getItem("categories"));
-}
 
+const storage = new Storage();
 const twitterAccounts = new TwitterAccounts();
-const categoryCollection = new CategoryCollection();
-const homeView = new HomeView(document.getElementsByClassName("storage")[0], twitterAccounts, categoryCollection, KEY, SECRET);
+const categoryCollection = new CategoryCollection(storage);
+const homeView = new HomeView(document.getElementsByClassName("storage")[0], twitterAccounts, categoryCollection, KEY, SECRET, storage);
 const categoriesView = new CategoriesView(document.getElementsByClassName("storage")[0], categoryCollection);
 
-let savedStorage = JSON.parse(localStorage.getItem("storage")).elements;
-let savedCategories = JSON.parse(localStorage.getItem("categories"))
-if (savedStorage) {
-    savedStorage.forEach(element => {
+const savedTweets = storage.getAccounts();
+const savedCategories = storage.getCategories();
+if (savedTweets) {
+    savedTweets.forEach(element => {
         twitterAccounts.push(element)
     })
     homeView.show();
@@ -103,27 +98,27 @@ document.getElementById("search").onkeyup = function () {
 
 //Twitter account
 function CreateTwitterAccountsHTML(data) {
-    let imgTag = `<img class="avatar" src='${data.profile_image_url}'></img>`;
+    const imgTag = `<img class="avatar" src='${data.profile_image_url}'></img>`;
     let nameTag;
     if (data.verified) {
         nameTag = `<p class="username_verified">${data.name}</p>`;
     } else {
         nameTag = `<p class="username">${data.name}</p>`;
     }
-    let screeNameTag = `<p class="screen-name"> @${data.screen_name}</p>`;
-    return `${imgTag}${nameTag}${screeNameTag}`;
+    const screenNameTag = `<p class="screen-name"> @${data.screen_name}</p>`;
+    return `${imgTag}${nameTag}${screenNameTag}`;
 }
 
 //Box itself
 function CreateTwitterContainer(data) {
-    let twitterContainer = document.createElement("div");
+    const twitterContainer = document.createElement("div");
     twitterContainer.className = "search-box__result";
     twitterContainer.innerHTML = CreateTwitterAccountsHTML(data);
     twitterContainer.data = data;
     twitterContainer.onclick = function () {
         if (!twitterAccounts.includes(this.data)) {
             twitterAccounts.push(this.data);
-            localStorage.setItem("storage", JSON.stringify(twitterAccounts));
+            storage.save("accounts", twitterAccounts);
             homeView.show();
         }
     };

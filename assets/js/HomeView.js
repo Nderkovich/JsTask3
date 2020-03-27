@@ -2,11 +2,12 @@ import { TwitterApi } from "./TwitterApi"
 import { TweetsView } from "./TweetsView"
 
 export class HomeView {
-    constructor(parentNode, observable, categories, key, secret) {
+    constructor(parentNode, observable, categories, key, secret, storage) {
         this.parentNode = parentNode;
         this.observable = observable;
         this.twitterApi = new TwitterApi(key, secret);
         this.categories = categories;
+        this.storage = storage;
     }
 
     show() {
@@ -41,13 +42,13 @@ export class HomeView {
         accountDeleter.className = "twitter-account__delete";
         accountDeleter.onclick = () => {
             this.observable.remove(twitterAccount);
-            localStorage.setItem("storage", JSON.stringify(this.observable));
+            this.storage.save("accounts", this.observable);
             this.show();
         };
         accountHeader.appendChild(this._renderAccountName(twitterAccount));
         accountHeader.appendChild(this._renderCategoryChoice(twitterAccount));
         accountHeader.appendChild(accountDeleter);
-        if (twitterAccount.category !== null){
+        if (twitterAccount.category !== null) {
             const category = document.createElement("div");
             category.className = "tweet__category";
             category.innerText = twitterAccount.category;
@@ -83,11 +84,11 @@ export class HomeView {
         return accountName;
     }
 
-    _renderCategoryChoice(twitterAccount){
+    _renderCategoryChoice(twitterAccount) {
         const choiceSelector = document.createElement("div");
         choiceSelector.className = "category__choice";
         choiceSelector.onclick = () => {
-            if (choiceSelector.innerHTML == ""){
+            if (choiceSelector.innerHTML == "") {
                 const choiceList = document.createElement("div");
                 choiceList.className = "category__list";
                 this.categories.categories.forEach(element => {
@@ -101,13 +102,13 @@ export class HomeView {
         return choiceSelector;
     }
 
-    _renderCategoryElement(twitterAccount, category){
+    _renderCategoryElement(twitterAccount, category) {
         const option = document.createElement("div");
         option.className = "category__element";
         option.innerText = category;
         option.onclick = () => {
             this.observable.setCategoty(twitterAccount, category);
-            localStorage.setItem("storage", JSON.stringify(this.observable));
+            this.storage.save("accounts", this.observable);
             this.show();
         }
 
