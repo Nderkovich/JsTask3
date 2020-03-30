@@ -1,11 +1,21 @@
 const request = require("request");
 const OAuth = require("oauth-1.0a");
 const crypto = require("crypto");
-import { CategoryCollection } from "./CategoryCollection.js";
-import { CategoriesView } from "./CategoriesView.js";
-import { HomeView } from "./HomeView.js";
-import { TwitterAccounts } from "./TwitterAccounts.js";
-import { Storage } from "./Storage.js"
+import {
+    CategoryCollection
+} from "./CategoryCollection.js";
+import {
+    CategoriesView
+} from "./CategoriesView.js";
+import {
+    HomeView
+} from "./HomeView.js";
+import {
+    TwitterAccounts
+} from "./TwitterAccounts.js";
+import {
+    Storage
+} from "./Storage.js"
 
 //TwitterApi class is used to get bearer token
 const KEY = "cuuPtExGpF3pS2IRINwGdyXRY";
