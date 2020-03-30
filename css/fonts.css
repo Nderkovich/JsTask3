@@ -83,9 +83,6 @@
 
 @font-face {
   font-family: "icomoon";
-  src: url("/icomoon.4d39a651.woff") format("woff");
+  src: url("../fonts/icomoon.woff") format("woff");
   margin-top: 50%;
 }
-
-
-/*# sourceMappingURL=/fonts.8a612949.css.map */
