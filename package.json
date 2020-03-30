@@ -2,16 +2,21 @@
     "homepage": "http://nderkovich.github.io/JsTask3",
     "name": "JsTask3",
     "dependencies": {
-        "oauth-1.0a": "2.2.6",
-        "request": "2.88.2",
         "crypto": "1.0.1",
-        "parcel": "1.12.4"
+        "fs": "0.0.1-security",
+        "net": "^1.0.2",
+        "oauth-1.0a": "2.2.6",
+        "parcel": "1.12.4",
+        "request": "2.88.2",
+        "tls": "0.0.1",
+        "webpack": "^4.42.1"
     },
     "scripts": {
         "deploy": "gh-pages -d .",
         "start": "parcel index.html"
     },
     "devDependencies": {
-        "gh-pages": "^2.2.0"
+        "gh-pages": "^2.2.0",
+        "webpack-cli": "^3.3.11"
     }
 }
