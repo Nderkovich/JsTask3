@@ -2,9 +2,35 @@ body {
     background-color: dodgerblue;
 }
 
-.home {
+.navigation {
+    display: flex;
+    flex-direction: row;
     font-size: 30px;
     font-family: "Roboto";
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.navigation__link {
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+.input-box{
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 25px;
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.input-confirm {
+    margin-left: 20px;
+    font-family: "Roboto";
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+    background-color: aqua;
 }
