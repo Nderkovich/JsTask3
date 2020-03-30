@@ -1,5 +1,5 @@
-import { TwitterApi } from "./TwitterApi"
-import { TweetsView } from "./TweetsView"
+import { TwitterApi } from "./TwitterApi.js"
+import { TweetsView } from "./TweetsView.js"
 
 export class HomeView {
     constructor(parentNode, observable, categories, key, secret, storage) {

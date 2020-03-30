@@ -1,4 +1,4 @@
-import { TwitterAccounts } from "./TwitterAccounts";
+import { TwitterAccounts } from "./TwitterAccounts.js";
 
 export class Storage {
     constructor() {
