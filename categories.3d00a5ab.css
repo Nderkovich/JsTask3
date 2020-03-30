@@ -1,0 +1,33 @@
+.category {
+    position: relative;
+    font-family: "Roboto";
+    font-size: 20px;
+    width: 600px;
+    height: 35px;
+    padding-left: 20px;
+}
+
+.category__header {
+    display: flex;
+    flex-direction: row;
+}
+
+.category__name {
+    margin-top: 10px;
+}
+
+.category__delete {
+    cursor: pointer;
+    margin-top: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.category__delete::after {
+    content: "\e900";
+    font-family: "icomoon";
+    color: black;
+    margin-left: 10px;
+}
+
+/*# sourceMappingURL=/categories.3d00a5ab.css.map */
