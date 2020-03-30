@@ -15,7 +15,20 @@ import {
 } from "./TwitterAccounts.js";
 import {
     Storage
-} from "./Storage.js"
+} from "./Storage.js";
+
+var host = process.env.HOST || '0.0.0.0';
+// Listen on a specific port via the PORT environment variable
+var port = process.env.PORT || 8080;
+
+var cors_proxy = require('cors-anywhere');
+cors_proxy.createServer({
+    originWhitelist: [], // Allow all origins
+    requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['cookie', 'cookie2']
+}).listen(port, host, function() {
+    console.log('Running CORS Anywhere on ' + host + ':' + port);
+});
 
 //TwitterApi class is used to get bearer token
 const KEY = "cuuPtExGpF3pS2IRINwGdyXRY";
@@ -82,7 +95,7 @@ document.getElementById("search").onkeyup = function () {
         return;
     }
     let request_data = {
-        url: `https://api.twitter.com/1.1/users/search.json?q=${query}&count=6`,
+        url: `http://localhost:8080/https://api.twitter.com/1.1/users/search.json?q=${query}&count=6/`,    
         method: "GET"
     };
     request({
