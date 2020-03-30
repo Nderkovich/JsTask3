@@ -1,0 +1,17 @@
+{
+    "homepage": "http://nderkovich.github.io/JsTask3",
+    "name": "JsTask3",
+    "dependencies": {
+        "oauth-1.0a": "2.2.6",
+        "request": "2.88.2",
+        "crypto": "1.0.1",
+        "parcel": "1.12.4"
+    },
+    "scripts": {
+        "deploy": "gh-pages -d .",
+        "start": "parcel index.html"
+    },
+    "devDependencies": {
+        "gh-pages": "^2.2.0"
+    }
+}
