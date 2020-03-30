@@ -1,0 +1,18 @@
+{
+    "homepage": "http://nderkovich.github.io/jstask3",
+    "name": "jstask3",
+    "dependencies": {
+        "oauth-1.0a": "2.2.6",
+        "request": "2.88.2",
+        "crypto": "1.0.1",
+        "parcel": "1.12.4"
+    },
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
+        "start": "parcel index.html"
+    },
+    "devDependencies": {
+        "gh-pages": "2.2.0"
+    }
+}
